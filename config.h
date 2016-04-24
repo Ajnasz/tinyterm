@@ -34,7 +34,7 @@
 #define TINYTERM_SEARCH_WRAP_AROUND TRUE
 #define TINYTERM_AUDIBLE_BELL   FALSE
 #define TINYTERM_VISIBLE_BELL   FALSE
-#define TINYTERM_FONT           "Anonymous Pro 9"
+#define TINYTERM_FONT           "Envy Code R 12"
 #define TINYTERM_STYLE "GtkWindow { background: black; }"
 
 
