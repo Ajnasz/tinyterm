@@ -26,6 +26,7 @@
 
 #include <stdlib.h>
 #include <signal.h>
+#include <string.h>
 #include <sys/wait.h>
 
 #include <glib.h>
@@ -40,6 +41,7 @@ static GApplication *_application = NULL;   // needs to be global for signal_han
 static void
 window_urgency_hint_cb(VteTerminal* vte, gpointer user_data)
 {
+    (void)user_data;
     gtk_window_set_urgency_hint(GTK_WINDOW (gtk_widget_get_toplevel(GTK_WIDGET (vte))), TRUE);
 }
 
@@ -172,6 +174,7 @@ vte_spawn(VteTerminal* vte, char* working_directory, char* command, char** envir
 static void
 window_close(GtkWindow* window, gint status, gpointer user_data)
 {
+    (void)window, (void)status;
     GtkApplication *app = (GtkApplication*)user_data;
 
     int count = 0;
@@ -190,6 +193,7 @@ window_close(GtkWindow* window, gint status, gpointer user_data)
 static void
 vte_exit_cb(VteTerminal *vte, gint status, gpointer user_data)
 {
+    (void)status, (void)vte;
     GtkWindow *window = (GtkWindow*)user_data;
 
     gtk_widget_destroy(GTK_WIDGET(window));
@@ -231,6 +235,7 @@ parse_arguments(int argc, char* argv[], char** command, char** directory, gboole
 static void
 signal_handler(int signal)
 {
+    (void)signal;
     g_application_quit(_application);
 }
 
@@ -314,12 +319,14 @@ void new_window(GtkApplication *app, gchar **argv, gint argc)
 static void
 activate(GApplication *app, gpointer user_data)
 {
+    (void)user_data;
     new_window(GTK_APPLICATION(app), NULL, 0);
 }
 
 static void
 command_line(GApplication *app, GApplicationCommandLine *command_line, gpointer user_data)
 {
+    (void)user_data;
     gchar **argc;
     gint argv;
     argc = g_application_command_line_get_arguments(command_line, &argv);

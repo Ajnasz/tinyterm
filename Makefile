@@ -20,7 +20,7 @@ LDLIBS := $(base_LIBS) $(pkgs_LIBS)
 
 all: tinyterm
 
-tinyterm: tinyterm.c config.h
+tinyterm: tinyterm.c
 
 clean:
 	$(RM) tinyterm tinyterm.o
