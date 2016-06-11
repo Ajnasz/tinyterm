@@ -93,13 +93,16 @@ vte_config(VteTerminal* vte)
 {
     GRegex* regex = g_regex_new(url_regex, G_REGEX_CASELESS, G_REGEX_MATCH_NOTEMPTY, NULL);
 
-    vte_terminal_search_set_gregex(vte, regex, G_REGEX_MATCH_NOTEMPTY);
-    vte_terminal_search_set_wrap_around     (vte, TINYTERM_SEARCH_WRAP_AROUND);
-    vte_terminal_set_audible_bell           (vte, TINYTERM_AUDIBLE_BELL);
-    vte_terminal_set_cursor_shape           (vte, TINYTERM_CURSOR_SHAPE);
-    vte_terminal_set_cursor_blink_mode      (vte, TINYTERM_CURSOR_BLINK);
-    vte_terminal_set_word_char_exceptions   (vte, TINYTERM_WORD_CHARS);
-    vte_terminal_set_scrollback_lines       (vte, TINYTERM_SCROLLBACK_LINES);
+    vte_terminal_search_set_gregex             (vte, regex, G_REGEX_MATCH_NOTEMPTY);
+    vte_terminal_search_set_wrap_around        (vte, TINYTERM_SEARCH_WRAP_AROUND);
+    vte_terminal_set_audible_bell              (vte, TINYTERM_AUDIBLE_BELL);
+    vte_terminal_set_cursor_shape              (vte, TINYTERM_CURSOR_SHAPE);
+    vte_terminal_set_cursor_blink_mode         (vte, TINYTERM_CURSOR_BLINK);
+    vte_terminal_set_word_char_exceptions      (vte, TINYTERM_WORD_CHARS);
+    vte_terminal_set_scrollback_lines          (vte, TINYTERM_SCROLLBACK_LINES);
+    vte_terminal_set_color_highlight           (vte, TINYTERM_COLOR_FOREGROUND);
+    vte_terminal_set_color_highlight_foreground(vte, TINYTERM_COLOR_BACKGROUND);
+
     PangoFontDescription *font = pango_font_description_from_string(TINYTERM_FONT);
     vte_terminal_set_font(vte, font);
 
